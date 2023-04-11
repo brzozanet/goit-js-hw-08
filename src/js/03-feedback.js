@@ -13,7 +13,6 @@ if (JSON.parse(localStorage.getItem("feedback-form-state"))) {
   const savedUserData = JSON.parse(localStorage.getItem("feedback-form-state"));
   emailEl.value = savedUserData.email;
   messageEl.value = savedUserData.message;
-  console.log(savedUserData);
 }
 
 const captureUserData = event => {
@@ -21,5 +20,17 @@ const captureUserData = event => {
   localStorage.setItem("feedback-form-state", JSON.stringify(userData));
 };
 
+const sendForm = event => {
+  if (emailEl.value === "" || messageEl.value === "") {
+    alert("Proszę wypełnić wszystkie pola formularza.");
+  } else {
+    event.preventDefault();
+    console.log(userData);
+    event.currentTarget.reset();
+    localStorage.removeItem("feedback-form-state");
+  }
+};
+
 emailEl.addEventListener("input", captureUserData);
 messageEl.addEventListener("input", captureUserData);
+formEl.addEventListener("submit", sendForm);
