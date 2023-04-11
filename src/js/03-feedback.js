@@ -1,4 +1,4 @@
-// import { throttle } from "lodash";
+import { throttle } from "lodash";
 
 const formEl = document.querySelector(".feedback-form");
 const emailEl = document.querySelector(".feedback-form input");
@@ -20,6 +20,8 @@ const captureUserData = event => {
   localStorage.setItem("feedback-form-state", JSON.stringify(userData));
 };
 
+const throttleCaptureUserData = throttle(captureUserData, 500);
+
 const sendForm = event => {
   if (emailEl.value === "" || messageEl.value === "") {
     alert("Proszę wypełnić wszystkie pola formularza.");
@@ -31,6 +33,6 @@ const sendForm = event => {
   }
 };
 
-emailEl.addEventListener("input", captureUserData);
-messageEl.addEventListener("input", captureUserData);
+emailEl.addEventListener("input", throttleCaptureUserData);
+messageEl.addEventListener("input", throttleCaptureUserData);
 formEl.addEventListener("submit", sendForm);
