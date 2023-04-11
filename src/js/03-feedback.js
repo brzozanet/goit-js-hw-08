@@ -11,8 +11,10 @@ let userData = {
 
 if (JSON.parse(localStorage.getItem("feedback-form-state"))) {
   const savedUserData = JSON.parse(localStorage.getItem("feedback-form-state"));
+  emailEl.value = savedUserData.email;
+  messageEl.value = savedUserData.message;
   console.log(savedUserData);
-};
+}
 
 const captureUserData = event => {
   userData[event.target.name] = event.target.value;
