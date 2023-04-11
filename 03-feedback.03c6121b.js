@@ -1,0 +1,2 @@
+!function(){document.querySelector(".feedback-form");const e=document.querySelector(".feedback-form input"),t=document.querySelector(".feedback-form textarea");let a={email:"",message:""};const o=JSON.parse(localStorage.getItem("feedback-form-state"));console.log(o),""!==o.email&&(e.value=o.email),""!==o.message&&(t.value=o.message);const r=e=>{a[e.target.name]=e.target.value,localStorage.setItem("feedback-form-state",JSON.stringify(a)),console.log(a)};e.addEventListener("input",r),t.addEventListener("input",r)}();
+//# sourceMappingURL=03-feedback.03c6121b.js.map
