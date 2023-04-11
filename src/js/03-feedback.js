@@ -9,20 +9,9 @@ let userData = {
   message: "",
 };
 
-const savedUserData = JSON.parse(localStorage.getItem("feedback-form-state"));
-console.log(savedUserData);
-
-// if (savedUserData.email || savedUserData.message !== "null") {
-//   emailEl.value = savedUserData.email;
-//   messageEl.value = savedUserData.message;
-// };
-
-if (savedUserData.email !== "null") {
-  emailEl.value = savedUserData.email;
-};
-
-if (savedUserData.message !== "null") {
-  messageEl.value = savedUserData.message;
+if (JSON.parse(localStorage.getItem("feedback-form-state"))) {
+  const savedUserData = JSON.parse(localStorage.getItem("feedback-form-state"));
+  console.log(savedUserData);
 };
 
 const captureUserData = event => {
